@@ -9,8 +9,6 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
     #IMPORTS#
 
     #VARIABLES#
-    valor_suma_inicial_jugador, valor_suma_carta_1_mas_carta_2_jugador, valor_suma_carta_1_mas_carta_2_mas_carta_jugador = 0, 0, 0
-    valor_suma_inicial_croupier, valor_suma_carta_1_mas_carta_2_croupier, valor_suma_carta_1_mas_carta_2_mas_carta_croupier = 0, 0, 0
     black_jack_natural_jugador, black_jack_natural_croupier, black_jack_natural_total = 0, 0, 0
     opcion_jugador = 1
     #VARIABLES#
@@ -34,6 +32,7 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
     valor_suma_inicial_jugador = valor_Carta_jugador_1
     valor_mano_jugador = valor_suma_inicial_jugador + valor_Carta_jugador_2
     valor_suma_inicial_croupier = valor_Carta_croupier_1
+    valor_carta_croupier = valor_Carta_croupier_1 + valor_Carta_croupier_2
     analisis_BJN_jugador = valor_mano_jugador
     analisis_BJN_croupier= valor_suma_inicial_croupier + valor_Carta_croupier_2
 
@@ -70,11 +69,11 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
         print("\n", "La primera carta del croupier es: ", tupla_carta_croupier_1)
 
-        print("\n", "Tu puntaje actual en la mano es: ", valor_suma_carta_1_mas_carta_2_jugador)
+        print("\n", "Tu puntaje actual en la mano es: ", valor_mano_jugador)
 
         print("\n", "El puntaje actual en la mano del croupier es: ", valor_suma_inicial_croupier)
 
-        while valor_suma_carta_1_mas_carta_2_jugador < 21 and opcion_jugador == 1:
+        while valor_mano_jugador < 21 and opcion_jugador == 1:
 
             print("\n", "Seleccione una de las siguientes opciones: ")
 
@@ -94,7 +93,7 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
                 print("\n", "Tu puntaje actual en la mano es: ", valor_mano_jugador)
 
-                while valor_mano_jugador >= 21 and valor_suma_carta_1_mas_carta_2_mas_carta_croupier < 17:
+                while valor_mano_jugador >= 21 and valor_mano_croupier < 17:
 
                     print("\n", "La nueva carta del croupier es: ", tupla_carta_croupier)
 
@@ -128,7 +127,7 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
                 validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
-                return validacion, monto_pozo_actual, contador_bj_natural, monto_apostado
+                return validacion, monto_pozo_actual, monto_apostado
 
             else:
 
@@ -142,7 +141,7 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
             validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
-            return validacion, monto_pozo_actual, contador_bj_natural, monto_apostado
+            return validacion, monto_pozo_actual, monto_apostado
 
 
         elif valor_mano_jugador > 21:
@@ -153,6 +152,6 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
             validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
-            return validacion, monto_pozo_actual, contador_bj_natural, monto_apostado
+            return validacion, monto_pozo_actual, monto_apostado
 
         #CUERPO_DEL_CODIGO#
