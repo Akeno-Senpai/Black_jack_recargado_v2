@@ -39,8 +39,6 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
     #MANO_SUMADA#
 
-    monto_apostado, monto_pozo_actual = 10, 10
-
     #CUERPO_DEL_CODIGO#
 
 
@@ -130,6 +128,8 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
                 validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
+                return validacion, monto_pozo_actual, contador_bj_natural, monto_apostado
+
             else:
 
                 print("Ingreso una opcion no valida")
@@ -142,7 +142,7 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
             validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
-            return validacion, monto_pozo_actual, contador_bj_natural
+            return validacion, monto_pozo_actual, contador_bj_natural, monto_apostado
 
 
         elif valor_mano_jugador > 21:
@@ -153,8 +153,6 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
             validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
-            return validacion, monto_pozo_actual, contador_bj_natural
+            return validacion, monto_pozo_actual, contador_bj_natural, monto_apostado
 
         #CUERPO_DEL_CODIGO#
-
-jugar_una_mano()

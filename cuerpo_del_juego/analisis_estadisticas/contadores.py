@@ -1,9 +1,9 @@
 
 
-def Contadores(Victorias_jugador, Partidas_jugadas, validacion, apuesta_actual):
+def contadores(victorias_jugador, partidas_jugadas, validacion, apuesta_actual):
     if validacion == 0 or validacion == 1 or validacion == 2:
 
-        Partidas_jugadas += 1
+        partidas_jugadas += 1
 
         if validacion == 1:
 
@@ -17,9 +17,9 @@ def Contadores(Victorias_jugador, Partidas_jugadas, validacion, apuesta_actual):
 
             racha_crupier = 0
 
-            Victorias_jugador += 1
+            victorias_jugador += 1
 
-        if Partidas_jugadas == 1:
+        if partidas_jugadas == 1:
 
             apuesta_inicial = apuesta_actual
 
@@ -27,4 +27,4 @@ def Contadores(Victorias_jugador, Partidas_jugadas, validacion, apuesta_actual):
 
     validacion = 0
 
-    return Victorias_jugador, Partidas_jugadas, validacion
+    return victorias_jugador, partidas_jugadas, validacion
