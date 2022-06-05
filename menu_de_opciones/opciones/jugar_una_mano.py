@@ -142,13 +142,18 @@ def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
             validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
+            return validacion, monto_pozo_actual, contador_bj_natural
+
 
         elif valor_mano_jugador > 21:
 
             valor_mano_final_jugador = valor_mano_jugador
+
             valor_mano_final_croupier = valor_mano_croupier
 
             validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
+
+            return validacion, monto_pozo_actual, contador_bj_natural
 
         #CUERPO_DEL_CODIGO#
 
