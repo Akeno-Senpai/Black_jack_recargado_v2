@@ -1,6 +1,6 @@
 
 
-def jugar_una_mano():
+def jugar_una_mano(monto_pozo_inicial, monto_pozo_actual):
 
     #IMPORTS#
     from generador_y_analisis_as.generador import generador
@@ -34,28 +34,54 @@ def jugar_una_mano():
     valor_suma_inicial_jugador = valor_Carta_jugador_1
     valor_mano_jugador = valor_suma_inicial_jugador + valor_Carta_jugador_2
     valor_suma_inicial_croupier = valor_Carta_croupier_1
-    #MANO_SUMADA#
+    analisis_BJN_jugador = valor_mano_jugador
+    analisis_BJN_croupier= valor_suma_inicial_croupier + valor_Carta_croupier_2
 
+    #MANO_SUMADA#
 
     monto_apostado, monto_pozo_actual = 10, 10
 
     #CUERPO_DEL_CODIGO#
-    print("\n", "Tu primera carta es: ", tupla_carta_jugador_1)
 
-    print("\n", "Tu segunda carta es: ", tupla_carta_jugador_2)
 
-    print("\n", "La primera carta del croupier es: ", tupla_carta_croupier_1)
+    print("-"*100)
 
-    print("\n", "Tu puntaje actual en la mano es: ", valor_suma_carta_1_mas_carta_2_jugador)
+    print("\n En tu pozo tienes disponible: ", monto_pozo_actual)
 
-    print("\n", "El puntaje actual en la mano del croupier es: ", valor_suma_inicial_croupier)
+    print("\n", "Ingrese el valor que quieres apostar:")
+
+    print("")
+
+    monto_apostado = int(input("\t"))
+
+    print("")
+
+    print("º" * 100)
+
+    print("º" * 100)
+
+    if monto_pozo_actual == 0:
+
+        monto_pozo_actual = monto_pozo_inicial
 
     if monto_apostado <= monto_pozo_actual and monto_apostado % 5 == 0 and monto_pozo_actual >= 5:
+
+        print("\n", "Tu primera carta es: ", tupla_carta_jugador_1)
+
+        print("\n", "Tu segunda carta es: ", tupla_carta_jugador_2)
+
+        print("\n", "La primera carta del croupier es: ", tupla_carta_croupier_1)
+
+        print("\n", "Tu puntaje actual en la mano es: ", valor_suma_carta_1_mas_carta_2_jugador)
+
+        print("\n", "El puntaje actual en la mano del croupier es: ", valor_suma_inicial_croupier)
 
         while valor_suma_carta_1_mas_carta_2_jugador < 21 and opcion_jugador == 1:
 
             print("\n", "Seleccione una de las siguientes opciones: ")
+
             print("\n", "1- Pedir carta")
+
             print("\n", "2- Plantarse")
 
             opcion_jugador = input("\nIngrese aqui su opcion: ")
@@ -100,7 +126,9 @@ def jugar_una_mano():
 
                     print("\n", "El puntaje actual en la mano del croupier es: ", valor_mano_croupier)
 
-                return
+                valor_mano_final_croupier = valor_mano_croupier
+
+                validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
             else:
 
@@ -109,15 +137,18 @@ def jugar_una_mano():
         if valor_mano_jugador == 21:
 
             valor_mano_final_jugador = valor_mano_jugador
+
             valor_mano_final_croupier = valor_mano_croupier
 
-            validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado()
+            validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
 
         elif valor_mano_jugador > 21:
 
-            pvalor_mano_final_jugador = valor_mano_jugador
+            valor_mano_final_jugador = valor_mano_jugador
             valor_mano_final_croupier = valor_mano_croupier
+
+            validacion, monto_pozo_actual, contador_bj_natural = analisis_resultado(valor_mano_final_jugador, valor_mano_final_croupier, monto_apostado, monto_pozo_actual, analisis_BJN_jugador, analisis_BJN_croupier)
 
         #CUERPO_DEL_CODIGO#
 
