@@ -1,13 +1,12 @@
-
-
-def menu_opciones(valor_pozo_inicial, bandera):
-
     from menu_de_opciones.opciones.jugar_una_mano import jugar_una_mano
     from menu_de_opciones.opciones.apostar import apostar
     from cuerpo_del_juego.analisis_estadisticas.contadores import contadores
+    from cuerpo_del_juego.bienvenida import bienvenida
     import time
 
-    valor_pozo_actual = 0
+    valor_pozo_inicial, bandera = bienvenida()
+
+    monto_pozo_actual = valor_pozo_inicial
     partidas_jugadas = 0
     victorias_jugador = 0
     monto_apostado = 0
@@ -33,12 +32,12 @@ def menu_opciones(valor_pozo_inicial, bandera):
 
             if opcion == 1:
 
-              valor_pozo_actual, valor_pozo_inicial_constante = apostar(valor_pozo_inicial)
+              monto_pozo_actual, valor_pozo_inicial_constante = apostar(valor_pozo_inicial)
 
 
             elif opcion == 2:
 
-                validacion, monto_pozo_actual, contador_bj_natural, monto_apostado = jugar_una_mano(valor_pozo_inicial, valor_pozo_actual)
+                validacion, monto_pozo_actual, contador_bj_natural, monto_apostado = jugar_una_mano(valor_pozo_inicial, monto_pozo_actual)
 
             elif opcion == 3:
 
